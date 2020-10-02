@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Model
 {
-    public class ItemModel
+    public class SanphamModel
     {
-        public string MASP { get; set; }
+        public int MASP { get; set; }
         public string MACODE { get; set; }
         public string TENSP { get; set; }
         public string URL { get; set; }
