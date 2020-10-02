@@ -7,9 +7,11 @@ namespace Model
     {
         public int MALOAI { get; set; }
         public string TENLOAI { get; set; }
-        public int PARENTID { get; set; }
+        public int? PARENTID { get; set; }
         public string HINH { get; set; }
         public string KEYWORD { get; set; }
         public string URL { get; set; }
+        public List<LoaispModel> children { get; set; }
+        public string type { get; set; }
     }
 }

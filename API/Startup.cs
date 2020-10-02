@@ -41,7 +41,7 @@ namespace API
             services.AddTransient<IItemGroupRepository, ItemGroupRepository>();
             services.AddTransient<IItemGroupBusiness, ItemGroupBusiness>();
             services.AddTransient<IItemRepository, ItemRepository>();
-            services.AddTransient<IItemBusiness, ItemBusiness>();
+            services.AddTransient<ILoaispBusiness, LoaispBusiness>();
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<ICustomerBusiness, CustomerBusiness>();
         }

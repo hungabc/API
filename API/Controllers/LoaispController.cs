@@ -12,10 +12,10 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ItemController : ControllerBase
+    public class LoaispController : ControllerBase
     {
-        private ItemBusiness _itemBusiness;
-        public ItemController(ItemBusiness itemBusiness)
+        private ILoaispBusiness _itemBusiness;
+        public LoaispController(ILoaispBusiness itemBusiness)
         {
             _itemBusiness = itemBusiness;
         }
@@ -34,12 +34,12 @@ namespace API.Controllers
         //{
         //    return _itemBusiness.GetDatabyID(id);
         //}
-        //[Route("get-all")]
-        //[HttpGet]
-        //public IEnumerable<ItemModel> GetDataAll()
-        //{
-        //    return _itemBusiness.GetDataAll();
-        //}
+        [Route("get-all")]
+        [HttpGet]
+        public IEnumerable<LoaispModel> GetDataAll()
+        {
+            return _itemBusiness.GetCha();
+        }
 
         //[Route("search")]
         //[HttpPost]
@@ -65,7 +65,6 @@ namespace API.Controllers
         //    }
         //    return response;
         //}
-
 
     }
 }

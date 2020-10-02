@@ -20,12 +20,8 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_item_create",
-                "@item_id", model.item_id,
-                "@item_group_id", model.item_group_id,
-                "@item_image", model.item_image,
-                "@item_name", model.item_name,
-                "@item_price", model.item_price);
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_item_create"
+                );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
