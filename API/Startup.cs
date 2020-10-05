@@ -52,6 +52,24 @@ namespace API
             services.AddTransient<IGiamgiaBusiness, GiamgiaBusiness>();
             services.AddTransient<IThanhvienRepository, ThanhvienRepository>();
             services.AddTransient<IThanhvienBusiness, ThanhvienBusiness>();
+            services.AddTransient<ITintucRepository, TintucRepository>();
+            services.AddTransient<ITintucBusiness, TintucBusiness>();
+            services.AddTransient<IThongkeRepository, ThongkeRepository>();
+            services.AddTransient<IThongkeBusiness, ThongkeBusiness>();
+            services.AddTransient<INhomtinRepository, NhomtinRepository>();
+            services.AddTransient<INhomtinBusiness, NhomtinBusiness>();
+            services.AddTransient<IHoadonnhapRepository, HoadonnhapRepository>();
+            services.AddTransient<IHoadonnhapBusiness, HoadonnhapBusiness>();
+            services.AddTransient<IHoadonbanRepository, HoadonbanRepository>();
+            services.AddTransient<IHoadonbanBusiness, HoadonbanBusiness>();
+            services.AddTransient<IDonhangRepository, DonhangRepository>();
+            services.AddTransient<IDonhangBusiness, DonhangBusiness>();
+            services.AddTransient<IChitietHDNRepository, ChitietHDNRepository>();
+            services.AddTransient<IChitietHDNBusiness, ChitietHDNBusiness>();
+            services.AddTransient<IChitietHDBRepository, ChitietHDBRepository>();
+            services.AddTransient<IChitietHDBBusiness, ChitietHDBBusiness>();
+            services.AddTransient<IChitietDHRepository, ChitietDHRepository>();
+            services.AddTransient<IChitietDHBusiness, ChitietDHBusiness>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
