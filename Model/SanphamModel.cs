@@ -20,5 +20,6 @@ namespace Model
         public int ANHIEN { get; set; }
         public int MANCC  { get; set; }
         public int MALOAI { get; set; }
+        public List<SanphamModel> children { get; set; }
     }
 }
