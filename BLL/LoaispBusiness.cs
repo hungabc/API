@@ -1,43 +1,24 @@
 ﻿using DAL;
-using Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-
+using Model;
 namespace BLL
 {
-    public partial class LoaispBusiness : ILoaispBusiness
+    public partial class LoaispBusiness:ILoaispBusiness
     {
         private ILoaispRepository _res;
-        public LoaispBusiness(ILoaispRepository ItemGroupRes)
+        public LoaispBusiness(ILoaispRepository LoaispGroupRes)
         {
-            _res = ItemGroupRes;
+            _res = LoaispGroupRes;
         }
-        public List<LoaispModel> GetCha()
+       
+       
+        public List<LoaispModel> GetDataAll()
         {
-            var allItemGroups = _res.GetDataAll();
-            var lstParent = allItemGroups.Where(ds => ds.PARENTID == null).ToList();
-            foreach (var item in lstParent)
-            {
-                item.children = GetHiearchyList(allItemGroups, item);
-            }
-            return lstParent;
+            return _res.GetDataAll();
         }
-        public List<LoaispModel> GetHiearchyList(List<LoaispModel> lstAll, LoaispModel node)
-        {
-            var lstChilds = lstAll.Where(ds => ds.PARENTID == node.PARENTID).ToList();
-
-            if (lstChilds.Count == 0)
-                return null;
-            for (int i = 0; i < lstChilds.Count; i++)
-            {
-                var childs = GetHiearchyList(lstAll, lstChilds[i]);
-                lstChilds[i].type = (childs == null || childs.Count == 0) ? "leaf" : "";
-                lstChilds[i].children = childs;
-            }
-            return lstChilds.ToList();
-        }
+       
     }
 
 }

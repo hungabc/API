@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DAL
 {
-   public partial interface ILoaispRepository
+    public partial interface ILoaispRepository
     {
         List<LoaispModel> GetDataAll();
     }
