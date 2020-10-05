@@ -12,41 +12,42 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoaispController : ControllerBase
+    public class SanphamController : ControllerBase
     {
-        private ILoaispBusiness abc;
-        public LoaispController(ILoaispBusiness cba)
+        private ISanphamBusiness abc;
+        public SanphamController(ISanphamBusiness cba)
         {
             abc = cba;
         }
-        // GET: api/<LoaispController>
+
+        // GET: api/<SanphamController>
         [Route("get-all")]
         [HttpGet]
-        public IEnumerable<LoaispModel> GetDataAll()
+        public IEnumerable<SanphamModel> GetDataAll()
         {
             return abc.GetDataAll();
         }
 
-        // GET api/<LoaispController>/5
+        // GET api/<SanphamController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<LoaispController>
+        // POST api/<SanphamController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<LoaispController>/5
+        // PUT api/<SanphamController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<LoaispController>/5
+        // DELETE api/<SanphamController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

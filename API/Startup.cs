@@ -46,6 +46,8 @@ namespace API
             services.AddTransient<ILoaispBusiness, LoaispBusiness>();
             services.AddTransient<ISanphamRepository, SanphamRepository>();
             services.AddTransient<ISanphamBusiness, SanphamBusiness>();
+            services.AddTransient<INccRepository, NccRepository>();
+            services.AddTransient<INccBusiness, NccBusiness>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,41 +12,42 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoaispController : ControllerBase
+    public class NccController : ControllerBase
     {
-        private ILoaispBusiness abc;
-        public LoaispController(ILoaispBusiness cba)
+        private INccBusiness abc;
+        public NccController(INccBusiness cba)
         {
             abc = cba;
         }
-        // GET: api/<LoaispController>
+
+        // GET: api/<NccController>
         [Route("get-all")]
         [HttpGet]
-        public IEnumerable<LoaispModel> GetDataAll()
+        public IEnumerable<NccModel> GetDataAll()
         {
             return abc.GetDataAll();
         }
 
-        // GET api/<LoaispController>/5
+        // GET api/<NccController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<LoaispController>
+        // POST api/<NccController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<LoaispController>/5
+        // PUT api/<NccController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<LoaispController>/5
+        // DELETE api/<NccController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
