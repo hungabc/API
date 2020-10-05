@@ -40,11 +40,12 @@ namespace API
             services.AddTransient<IDatabaseHelper, DatabaseHelper>();
             services.AddTransient<IItemGroupRepository, ItemGroupRepository>();
             services.AddTransient<IItemGroupBusiness, ItemGroupBusiness>();
-            services.AddTransient<IItemRepository, ItemRepository>();
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<ICustomerBusiness, CustomerBusiness>();
             services.AddTransient<ILoaispRepository, LoaispRepository>();
             services.AddTransient<ILoaispBusiness, LoaispBusiness>();
+            services.AddTransient<ISanphamRepository, SanphamRepository>();
+            services.AddTransient<ISanphamBusiness, SanphamBusiness>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,14 +5,14 @@ using System.Text;
 using Model;
 namespace BLL
 {
-    public partial class LoaispBusiness:ILoaispBusiness
+    public partial class SanphamBusiness : ISanphamBusiness
     {
-        private ILoaispRepository _res;
-        public LoaispBusiness(ILoaispRepository LoaispGroupRes)
+        private ISanphamRepository _res;
+        public SanphamBusiness(ISanphamRepository LoaispGroupRes)
         {
             _res = LoaispGroupRes;
         }
-        public List<LoaispModel> GetDataAll()
+        public List<SanphamModel> GetDataAll()
         {
             return _res.GetDataAll();
         }
