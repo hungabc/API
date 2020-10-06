@@ -21,7 +21,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getTintuc");
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "gettintuc");
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<TintucModel>().ToList();

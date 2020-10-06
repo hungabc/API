@@ -21,7 +21,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getHoadonnhap");
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "gethoadonnhap");
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<HoadonnhapModel>().ToList();

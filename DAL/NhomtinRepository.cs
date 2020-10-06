@@ -21,7 +21,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getNhomtin");
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getnhomtin");
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<NhomtinModel>().ToList();

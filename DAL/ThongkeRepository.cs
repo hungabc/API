@@ -21,7 +21,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getThongke");
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getthongke");
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<ThongkeModel>().ToList();

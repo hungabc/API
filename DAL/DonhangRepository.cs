@@ -21,7 +21,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getDonhang");
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getdonhang");
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<DonhangModel>().ToList();

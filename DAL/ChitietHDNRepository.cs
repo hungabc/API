@@ -21,7 +21,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getChitietHDN");
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getchitiethdn");
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<ChitietHDNModel>().ToList();

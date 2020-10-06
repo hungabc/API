@@ -21,7 +21,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getHoadonban");
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "gethoadonban");
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<HoadonbanModel>().ToList();
