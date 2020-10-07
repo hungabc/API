@@ -31,6 +31,28 @@ namespace DAL
                 throw ex;
             }
         }
+        public bool Create(NhomtinModel model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "themnhomtin",
+                "@MALOAI", model.MALOAI,
+                "@TENLOAI", model.TENLOAI,
+                "@URL", model.URL,
+                "@KEYWORD", model.KEYWORD
+                );
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
 

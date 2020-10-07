@@ -8,5 +8,6 @@ namespace DAL
     public partial interface ILoaispRepository
     {
         List<LoaispModel> GetDataAll();
+        bool Create(LoaispModel model);
     }
 }

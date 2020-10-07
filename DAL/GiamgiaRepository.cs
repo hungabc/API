@@ -31,6 +31,28 @@ namespace DAL
                 throw ex;
             }
         }
+        public bool Create(GiamgiaModel model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "themgiamgia",
+                "@MAGIAMGIA", model.MAGIAMGIA,
+                "@GIAMGIA", model.GIAMGIA,
+                "@NGAYAPDUNG", model.NGAYAPDUNG,
+                "@NGAYKETTHUC", model.NGAYKETTHUC
+                );
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
 

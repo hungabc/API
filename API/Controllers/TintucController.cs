@@ -52,5 +52,12 @@ namespace API.Controllers
         public void Delete(int id)
         {
         }
+        [Route("create-loaisp")]
+        [HttpPost]
+        public TintucModel CreateItem([FromBody] TintucModel model)
+        {
+            abc.Create(model);
+            return model;
+        }
     }
 }

@@ -31,6 +31,27 @@ namespace DAL
                 throw ex;
             }
         }
+        public bool Create(ThongkeModel model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "themthongke",
+                "@MATK", model.MATK,
+                "@THOIGIAN", model.THOIGIAN,
+                "@SOTRUYCAP", model.SOTRUYCAP);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        //
     }
 }
 

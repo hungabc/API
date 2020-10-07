@@ -31,6 +31,34 @@ namespace DAL
                 throw ex;
             }
         }
+        public bool Create(TintucModel model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "themtintuc",
+                "@MATT", model.MATT,
+                "@TIEUDE", model.TIEUDE,
+                "@URL", model.URL,
+                "@HINH", model.HINH,
+                "@NGAYDANG", model.NGAYDANG,
+                "@TOMTAT", model.TOMTAT,
+                "@NOIDUNG", model.NOIDUNG,
+                "@TENDANGNHAP", model.TENDANGNHAP,
+                "@MANHOM", model.MANHOM,
+                "@KEYWORD", model.KEYWORD
+                );
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
 

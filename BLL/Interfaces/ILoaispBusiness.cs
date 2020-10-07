@@ -7,5 +7,6 @@ namespace BLL
     public partial interface ILoaispBusiness
     {
         List<LoaispModel> GetDataAll();
+        bool Create(LoaispModel model);
     }
 }

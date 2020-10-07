@@ -31,6 +31,30 @@ namespace DAL
                 throw ex;
             }
         }
+        public bool Create(NccModel model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "themtintuc",
+                "@MANCC", model.MANCC,
+                "@TENNCC", model.TENNCC,
+                "@GIOITHIEU", model.GIOITHIEU,
+                "@HINH", model.HINH,
+                "@KEYWORD", model.KEYWORD,
+                "@URL", model.URL
+                );
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
 

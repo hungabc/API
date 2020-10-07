@@ -8,5 +8,6 @@ namespace DAL
     public partial interface ITintucRepository
     {
         List<TintucModel> GetDataAll();
+        bool Create(TintucModel model);
     }
 }

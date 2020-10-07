@@ -70,6 +70,8 @@ namespace API
             services.AddTransient<IChitietHDBBusiness, ChitietHDBBusiness>();
             services.AddTransient<IChitietDHRepository, ChitietDHRepository>();
             services.AddTransient<IChitietDHBusiness, ChitietDHBusiness>();
+            services.AddTransient<IItemRepository, ItemRepository>();
+            services.AddTransient<IItemBusiness, ItemBusiness>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

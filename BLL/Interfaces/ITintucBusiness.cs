@@ -7,5 +7,6 @@ namespace BLL
     public partial interface ITintucBusiness
     {
         List<TintucModel> GetDataAll();
+        bool Create(TintucModel model);
     }
 }

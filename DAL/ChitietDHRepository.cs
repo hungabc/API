@@ -31,6 +31,29 @@ namespace DAL
                 throw ex;
             }
         }
+        public bool Create(ChitietDHModel model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "themchitietdonhang",
+                "@MADH", model.MADH,
+                "@MASP", model.MASP,
+                "@GIA", model.GIA,
+                "@SOLUONG", model.SOLUONG,
+                "@THANHTIEN", model.THANHTIEN
+                );
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
 

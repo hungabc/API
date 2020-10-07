@@ -16,6 +16,9 @@ namespace BLL
         {
             return _res.GetDataAll();
         }
-       
+        public bool Create(TintucModel model)
+        {
+            return _res.Create(model);
+        }
     }
 }

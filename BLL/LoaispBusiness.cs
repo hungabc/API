@@ -16,6 +16,9 @@ namespace BLL
         {
             return _res.GetDataAll();
         }
-       
+        public bool Create(LoaispModel model)
+        {
+            return _res.Create(model);
+        }
     }
 }

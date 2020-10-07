@@ -51,5 +51,13 @@ namespace API.Controllers
         public void Delete(int id)
         {
         }
+
+        [Route("create-loaisp")]
+        [HttpPost]
+        public LoaispModel CreateItem([FromBody] LoaispModel model)
+        {
+            abc.Create(model);
+            return model;
+        }
     }
 }
