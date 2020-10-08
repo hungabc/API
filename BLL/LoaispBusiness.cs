@@ -20,5 +20,9 @@ namespace BLL
         {
             return _res.Create(model);
         }
+        public LoaispModel GetDatabyID(string id)
+        {
+            return _res.GetDatabyID(id);
+        }
     }
 }

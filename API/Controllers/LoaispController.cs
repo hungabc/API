@@ -52,12 +52,19 @@ namespace API.Controllers
         {
         }
 
-        [Route("create-loaisp")]
+        [Route("themsp")]
         [HttpPost]
-        public LoaispModel CreateItem([FromBody] LoaispModel model)
+        public LoaispModel Createloaisp([FromBody] LoaispModel model)
         {
             abc.Create(model);
             return model;
+        }
+
+        [Route("getmaloai/{id}")]
+        [HttpGet]
+        public LoaispModel GetDatabyID(string id)
+        {
+            return abc.GetDatabyID(id);
         }
     }
 }

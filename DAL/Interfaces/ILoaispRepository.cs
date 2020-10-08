@@ -9,5 +9,6 @@ namespace DAL
     {
         List<LoaispModel> GetDataAll();
         bool Create(LoaispModel model);
+        LoaispModel GetDatabyID(string id);
     }
 }
