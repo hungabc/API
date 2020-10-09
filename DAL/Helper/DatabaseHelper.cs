@@ -916,6 +916,11 @@ namespace DAL.Helper
             }
             return result;
         }
+
+        public object ExecuteSProcedureReturnDataTable(out int msgError, string v1, string v2, string id)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 

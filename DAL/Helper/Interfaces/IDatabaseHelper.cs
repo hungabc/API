@@ -64,6 +64,8 @@ namespace DAL.Helper
         /// <param name="paramObjects">List Param Objects, Each Item include 'ParamName' and 'ParamValue'</param>
         /// <returns>DataSet result</returns>
         DataSet ExecuteSProcedureReturnDataset(out string msgError, string sprocedureName, params object[] paramObjects);
+        object ExecuteSProcedureReturnDataTable(out int msgError, string v1, string v2, string id);
+
         /// <summary>
         /// Execute Procedure None Query
         /// </summary>

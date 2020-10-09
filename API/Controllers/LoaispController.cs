@@ -14,17 +14,17 @@ namespace API.Controllers
     [ApiController]
     public class LoaispController : ControllerBase
     {
-        private ILoaispBusiness abc;
-        public LoaispController(ILoaispBusiness cba)
+        private ILoaispBusiness _LoaispBusiness;
+        public LoaispController(ILoaispBusiness LoaispBusiness)
         {
-            abc = cba;
+            _LoaispBusiness = LoaispBusiness;
         }
         // GET: api/<LoaispController>
         [Route("get-all")]
         [HttpGet]
         public IEnumerable<LoaispModel> GetDataAll()
         {
-            return abc.GetDataAll();
+            return _LoaispBusiness.GetDataAll();
         }
 
         // GET api/<LoaispController>/5
@@ -52,11 +52,11 @@ namespace API.Controllers
         {
         }
 
-        [Route("themsp")]
+        [Route("them-loai")]
         [HttpPost]
-        public LoaispModel Createloaisp([FromBody] LoaispModel model)
+        public LoaispModel CreateItem([FromBody] LoaispModel model)
         {
-            abc.Create(model);
+            _LoaispBusiness.Create(model);
             return model;
         }
 
@@ -64,7 +64,7 @@ namespace API.Controllers
         [HttpGet]
         public LoaispModel GetDatabyID(string id)
         {
-            return abc.GetDatabyID(id);
+            return _LoaispBusiness.GetDatabyID(id);
         }
     }
 }

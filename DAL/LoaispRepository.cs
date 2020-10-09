@@ -41,7 +41,8 @@ namespace DAL
                 "@TENLOAI", model.TENLOAI,
                 "@PARENTID", model.PARENTID,
                 "@HINH", model.HINH,
-                "@KEYWORD", model.KEYWORD);
+                "@KEYWORD", model.KEYWORD,
+                "@URL", model.URL);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -58,11 +59,26 @@ namespace DAL
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getbyid",
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "laytheomaloai",
                      "@MALOAI", id);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<LoaispModel>().FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<LoaispModel> GetData()
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "loaispgetdata");
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<LoaispModel>().ToList();
             }
             catch (Exception ex)
             {

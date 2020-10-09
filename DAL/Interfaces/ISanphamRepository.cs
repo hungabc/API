@@ -7,6 +7,9 @@ namespace DAL
 {
     public partial interface ISanphamRepository
     {
+        bool Create(SanphamModel model);
         List<SanphamModel> GetDataAll();
+        SanphamModel GetDatabyID(string id);
+        List<SanphamModel> Search(int pageIndex, int pageSize, out long total, int MALOAI);
     }
 }

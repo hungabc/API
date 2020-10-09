@@ -14,10 +14,10 @@ namespace API.Controllers
     [ApiController]
     public class SanphamController : ControllerBase
     {
-        private ISanphamBusiness abc;
-        public SanphamController(ISanphamBusiness cba)
+        private ISanphamBusiness _SanphamBusiness;
+        public SanphamController(ISanphamBusiness SanphamBusiness)
         {
-            abc = cba;
+            _SanphamBusiness = SanphamBusiness;
         }
 
         // GET: api/<SanphamController>
@@ -25,7 +25,7 @@ namespace API.Controllers
         [HttpGet]
         public IEnumerable<SanphamModel> GetDataAll()
         {
-            return abc.GetDataAll();
+            return _SanphamBusiness.GetDataAll();
         }
 
         // GET api/<SanphamController>/5
@@ -51,6 +51,44 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+        [Route("search")]
+        [HttpPost]
+        public ResponseModel Search([FromBody] Dictionary<string, object> formData)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                var page = int.Parse(formData["page"].ToString());
+                var pageSize = int.Parse(formData["pageSize"].ToString());
+                int MALOAI= 0;
+                if (formData.Keys.Contains("MALOAI") && !string.IsNullOrEmpty(Convert.ToString(formData["MALOAI"]))) { MALOAI = Convert.ToInt32(formData["MALOAI"]); }
+                long total = 0;
+                var data = _SanphamBusiness.Search(page, pageSize, out total, MALOAI);
+                response.TotalItems = total;
+                response.Data = data;
+                response.Page = page;
+                response.PageSize = pageSize;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return response;
+        }
+        [Route("them-sanpham")]
+        [HttpPost]
+        public SanphamModel CreateItem([FromBody] SanphamModel model)
+        {
+            _SanphamBusiness.Create(model);
+            return model;
+        }
+
+        [Route("gettheomasp/{id}")]
+        [HttpGet]
+        public SanphamModel GetDatabyID(string id)
+        {
+            return _SanphamBusiness.GetDatabyID(id);
         }
     }
 }

@@ -21,5 +21,6 @@ namespace Model
         public int MANCC  { get; set; }
         public int MALOAI { get; set; }
         public List<SanphamModel> children { get; set; }
+        public string type { get; set; }
     }
 }
