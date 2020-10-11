@@ -52,6 +52,27 @@ namespace API.Controllers
         public void Delete(int id)
         {
         }
+        [Route("sp-phan-trang")]
+        public ResponseModel PhanTrang([FromBody] Dictionary<string, object> formData)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                var page = int.Parse(formData["page"].ToString());
+                var pageSize = int.Parse(formData["pageSize"].ToString());
+                long total = 0;
+                var data = _SanphamBusiness.PhanTrang(page, pageSize, out total);
+                response.TotalItems = total;
+                response.Data = data;
+                response.Page = page;
+                response.PageSize = pageSize;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return response;
+        }
         [Route("search")]
         [HttpPost]
         public ResponseModel Search([FromBody] Dictionary<string, object> formData)
@@ -61,7 +82,7 @@ namespace API.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
-                int MALOAI= 0;
+                int MALOAI= 1;
                 if (formData.Keys.Contains("MALOAI") && !string.IsNullOrEmpty(Convert.ToString(formData["MALOAI"]))) { MALOAI = Convert.ToInt32(formData["MALOAI"]); }
                 long total = 0;
                 var data = _SanphamBusiness.Search(page, pageSize, out total, MALOAI);

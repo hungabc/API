@@ -31,6 +31,24 @@ namespace DAL
                 throw ex;
             }
         }
+        public List<SanphamModel> Phantrang(int pageIndex, int pageSize, out long total)
+        {
+            total = 0;
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "phantrang", "@page_index", pageIndex,
+                    "@page_size", pageSize);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
+                return dt.ConvertTo<SanphamModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public bool Create(SanphamModel model)
         {
             string msgError = "";

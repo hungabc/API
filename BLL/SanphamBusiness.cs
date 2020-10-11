@@ -16,6 +16,10 @@ namespace BLL
         {
             return _res.GetDataAll();
         }
+        public List<SanphamModel> PhanTrang(int pageIndex, int pageSize, out long total)
+        {
+            return _res.Phantrang(pageIndex, pageSize, out  total);
+        }
         public bool Create(SanphamModel model)
         {
             return _res.Create(model);
