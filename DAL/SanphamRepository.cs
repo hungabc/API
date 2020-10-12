@@ -49,6 +49,22 @@ namespace DAL
                 throw ex;
             }
         }
+        public List<SanphamModel> SanPhamMoi(int soluong)
+        { 
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sanphammoi", "@SOLUONG", soluong);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+          
+                return dt.ConvertTo<SanphamModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public bool Create(SanphamModel model)
         {
             string msgError = "";
@@ -89,6 +105,26 @@ namespace DAL
             try
             {
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "timkiemphantrang",
+                    "@page_index", pageIndex,
+                    "@page_size", pageSize,
+                    "@MALOAI", MALOAI);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
+                return dt.ConvertTo<SanphamModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<SanphamModel> SpTheoLoai(int pageIndex, int pageSize, out long total, int MALOAI)
+        {
+            string msgError = "";
+            total = 0;
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getsanphamtheoloai",
                     "@page_index", pageIndex,
                     "@page_size", pageSize,
                     "@MALOAI", MALOAI);

@@ -20,6 +20,10 @@ namespace BLL
         {
             return _res.Phantrang(pageIndex, pageSize, out  total);
         }
+        public List<SanphamModel> SPMoi(int soluong)
+        {
+            return _res.SanPhamMoi(soluong);
+        }
         public bool Create(SanphamModel model)
         {
             return _res.Create(model);
@@ -31,6 +35,10 @@ namespace BLL
         public List<SanphamModel> Search(int pageIndex, int pageSize, out long total, int MALOAI)
         {
             return _res.Search(pageIndex, pageSize, out total, MALOAI);
+        }
+        public List<SanphamModel> SanPhamTheoLoai(int pageIndex, int pageSize, out long total, int MALOAI)
+        {
+            return _res.SpTheoLoai(pageIndex, pageSize, out total, MALOAI);
         }
     }
 }

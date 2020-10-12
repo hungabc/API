@@ -73,6 +73,7 @@ namespace API.Controllers
             }
             return response;
         }
+  
         [Route("search")]
         [HttpPost]
         public ResponseModel Search([FromBody] Dictionary<string, object> formData)
@@ -97,6 +98,7 @@ namespace API.Controllers
             }
             return response;
         }
+    
         [Route("them-sanpham")]
         [HttpPost]
         public SanphamModel CreateItem([FromBody] SanphamModel model)
