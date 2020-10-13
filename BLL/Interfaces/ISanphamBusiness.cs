@@ -12,6 +12,6 @@ namespace BLL
         List<SanphamModel> GetDataAll();
         List<SanphamModel> SPMoi(int soluong);
         List<SanphamModel> Search(int pageIndex, int pageSize, out long total, int MALOAI);
-        List<SanphamModel> SanPhamTheoLoai(int pageIndex, int pageSize, out long total, int MALOAI);
+        List<SanphamModel> SanPhamTheoLoai(int pageIndex, int pageSize, out long total, string url);
     }
 }

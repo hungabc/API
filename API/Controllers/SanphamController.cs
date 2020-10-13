@@ -113,5 +113,29 @@ namespace API.Controllers
         {
             return _SanphamBusiness.GetDatabyID(id);
         }
+        [Route("sp-theo-loai")]
+        [HttpGet]
+        public ResponseModel Sptheoloai([FromBody] Dictionary<string, object> formData)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                var page = int.Parse(formData["page"].ToString());
+                var pageSize = int.Parse(formData["pageSize"].ToString());
+                string MALOAI = "";
+                if (formData.Keys.Contains("MALOAI") && !string.IsNullOrEmpty(Convert.ToString(formData["MALOAI"]))) { MALOAI = Convert.ToString(formData["MALOAI"]); }
+                long total = 0;
+                var data = _SanphamBusiness.SanPhamTheoLoai(page, pageSize, out total, MALOAI);
+                response.TotalItems = total;
+                response.Data = data;
+                response.Page = page;
+                response.PageSize = pageSize;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return response;
+        }
     }
 }

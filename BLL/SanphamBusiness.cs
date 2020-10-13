@@ -36,9 +36,9 @@ namespace BLL
         {
             return _res.Search(pageIndex, pageSize, out total, MALOAI);
         }
-        public List<SanphamModel> SanPhamTheoLoai(int pageIndex, int pageSize, out long total, int MALOAI)
+        public List<SanphamModel> SanPhamTheoLoai(int pageIndex, int pageSize, out long total, string url)
         {
-            return _res.SpTheoLoai(pageIndex, pageSize, out total, MALOAI);
+            return _res.SpTheoLoai(pageIndex, pageSize, out total, url);
         }
     }
 }

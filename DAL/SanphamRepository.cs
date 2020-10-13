@@ -118,7 +118,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public List<SanphamModel> SpTheoLoai(int pageIndex, int pageSize, out long total, int MALOAI)
+        public List<SanphamModel> SpTheoLoai(int pageIndex, int pageSize, out long total, string url)
         {
             string msgError = "";
             total = 0;
@@ -127,7 +127,7 @@ namespace DAL
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getsanphamtheoloai",
                     "@page_index", pageIndex,
                     "@page_size", pageSize,
-                    "@MALOAI", MALOAI);
+                    "@url", url);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
