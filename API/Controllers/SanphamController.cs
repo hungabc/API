@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 using BLL;
 using Microsoft.AspNetCore.Mvc;
 using Model;
@@ -113,29 +114,16 @@ namespace API.Controllers
         {
             return _SanphamBusiness.GetDatabyID(id);
         }
-        [Route("sp-theo-loai")]
+        [Route("sp-theo-loai/{url}/{page}/{size}")]
         [HttpGet]
-        public ResponseModel Sptheoloai([FromBody] Dictionary<string, object> formData)
+        public List<SanphamModel> Sptheoloai(string url,int?  page,  int?size)
         {
-            var response = new ResponseModel();
-            try
-            {
-                var page = int.Parse(formData["page"].ToString());
-                var pageSize = int.Parse(formData["pageSize"].ToString());
-                string MALOAI = "";
-                if (formData.Keys.Contains("MALOAI") && !string.IsNullOrEmpty(Convert.ToString(formData["MALOAI"]))) { MALOAI = Convert.ToString(formData["MALOAI"]); }
-                long total = 0;
-                var data = _SanphamBusiness.SanPhamTheoLoai(page, pageSize, out total, MALOAI);
-                response.TotalItems = total;
-                response.Data = data;
-                response.Page = page;
-                response.PageSize = pageSize;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            return response;
+            size = size ?? 10;
+            page = page ?? 1;
+            long total = 0;
+            var kq = _SanphamBusiness.SanPhamTheoLoai(page.Value, size.Value, out total, url);
+            total = kq.Count;
+            return kq;
         }
     }
 }
