@@ -20,11 +20,11 @@ namespace BLL
         {
             return _res.Create(model);
         }
-        public LoaispModel GetDatabyID(string id)
+        public LoaispModel GetDatabyID(int id)
         {
             return _res.GetDatabyID(id);
         }
-        public bool Delete(string id)
+        public bool Delete(int id)
         {
             return _res.Delete(id);
         }

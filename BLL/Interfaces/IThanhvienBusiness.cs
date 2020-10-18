@@ -9,6 +9,6 @@ namespace BLL
         List<ThanhvienModel> GetDataAll();
         bool Update(ThanhvienModel model);
         bool Delete(string id);
-        void Create(ThanhvienModel model);
+        bool Create(ThanhvienModel model);
     }
 }

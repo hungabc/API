@@ -56,15 +56,15 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult DeleteLSP([FromBody] Dictionary<string, object> formData)
         {
-            string user_id = "";
-            if (formData.Keys.Contains("user_id") && !string.IsNullOrEmpty(Convert.ToString(formData["user_id"]))) { user_id = Convert.ToString(formData["user_id"]); }
-            _LoaispBusiness.Delete(user_id);
+            int MALOAI = 1;
+            if (formData.Keys.Contains("MALOAI") && !string.IsNullOrEmpty(Convert.ToString(formData["user_id"]))) { MALOAI = Convert.ToInt32(formData["MALOAI"]); }
+            _LoaispBusiness.Delete(MALOAI);
             return Ok();
         }
         //
         [Route("getmaloai/{id}")]
         [HttpGet]
-        public LoaispModel GetDatabyID(string id)
+        public LoaispModel GetDatabyID(int id)
         {
             return _LoaispBusiness.GetDatabyID(id);
         }

@@ -138,7 +138,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public SanphamModel GetDatabyID(string id)
+        public SanphamModel GetDatabyID(int id)
         {
             string msgError = "";
             try
@@ -154,13 +154,13 @@ namespace DAL
                 throw ex;
             }
         }
-        public bool Delete(string id)
+        public bool Delete(int id)
         {
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "",
-                "@", id);
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "xoasanpham",
+                "@MASP", id);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -177,7 +177,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "",
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "suasanpham",
                 "@MASP", model.MASP,
                 "@MACODE", model.MACODE,
                 "@TENSP", model.TENSP,

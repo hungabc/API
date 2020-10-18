@@ -10,6 +10,6 @@ namespace DAL
         List<NccModel> GetDataAll();
         bool Create(NccModel model);
         bool Update(NccModel model);
-        bool Delete(string id);
+        bool Delete(int id);
     }
 }

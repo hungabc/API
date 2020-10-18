@@ -9,7 +9,5 @@ namespace DAL
     {
         List<HoadonbanModel> GetDataAll();
         bool Create(HoadonbanModel model);
-        bool Update(HoadonbanModel model);
-        bool Delete(string id);
     }
 }

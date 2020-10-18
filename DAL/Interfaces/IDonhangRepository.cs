@@ -10,6 +10,6 @@ namespace DAL
         List<DonhangModel> GetDataAll();
         bool Create(DonhangModel model);
         bool Update(DonhangModel model);
-        bool Delete(string id);
+        bool Delete(int id);
     }
 }

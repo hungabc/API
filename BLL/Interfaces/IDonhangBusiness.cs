@@ -8,7 +8,7 @@ namespace BLL
     {
         List<DonhangModel> GetDataAll();
         bool Update(DonhangModel model);
-        bool Delete(string id);
+        bool Delete(int id);
         bool Create(DonhangModel model);
     }
 }

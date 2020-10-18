@@ -54,9 +54,9 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult DeleteKH([FromBody] Dictionary<string, object> formData)
         {
-            string user_id = "";
-            if (formData.Keys.Contains("user_id") && !string.IsNullOrEmpty(Convert.ToString(formData["user_id"]))) { user_id = Convert.ToString(formData["user_id"]); }
-            abc.Delete(user_id);
+            string TENDANGNHAP = "";
+            if (formData.Keys.Contains("user_id") && !string.IsNullOrEmpty(Convert.ToString(formData["TENDANGNHAP"]))) { TENDANGNHAP = Convert.ToString(formData["TENDANGNHAP"]); }
+            abc.Delete(TENDANGNHAP);
             return Ok();
         }
     }

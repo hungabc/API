@@ -16,7 +16,7 @@ namespace BLL
         {
             return _res.GetDataAll();
         }
-        public bool Delete(string id)
+        public bool Delete(int id)
         {
             return _res.Delete(id);
         }

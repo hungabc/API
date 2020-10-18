@@ -55,13 +55,13 @@ namespace DAL
                 throw ex;
             }
         }
-        public bool Delete(string id)
+        public bool Delete(int id)
         {
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "",
-                "@", id);
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "xoancc",
+                "@MANCC", id);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -78,7 +78,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_user_update",
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "suancc",
                 "@MANCC", model.MANCC,
                 "@TENNCC", model.TENNCC,
                 "@GIOITHIEU", model.GIOITHIEU,

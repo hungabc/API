@@ -53,9 +53,9 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult DeleteDH([FromBody] Dictionary<string, object> formData)
         {
-            string user_id = "";
-            if (formData.Keys.Contains("user_id") && !string.IsNullOrEmpty(Convert.ToString(formData["user_id"]))) { user_id = Convert.ToString(formData["user_id"]); }
-            abc.Delete(user_id);
+            int MADH = 1;
+            if (formData.Keys.Contains("MADH") && !string.IsNullOrEmpty(Convert.ToString(formData["MADH"]))) { MADH = Convert.ToInt32(formData["MADH"]); }
+            abc.Delete(MADH);
             return Ok();
         }
     }

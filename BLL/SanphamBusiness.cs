@@ -28,7 +28,7 @@ namespace BLL
         {
             return _res.Create(model);
         }
-        public SanphamModel GetDatabyID(string id)
+        public SanphamModel GetDatabyID(int id)
         {
             return _res.GetDatabyID(id);
         }
@@ -40,7 +40,7 @@ namespace BLL
         {
             return _res.SpTheoLoai(pageIndex, pageSize, out total, url);
         }
-        public bool Delete(string id)
+        public bool Delete(int id)
         {
             return _res.Delete(id);
         }

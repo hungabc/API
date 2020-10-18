@@ -78,9 +78,9 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult DeleteSP([FromBody] Dictionary<string, object> formData)
         {
-            string user_id = "";
-            if (formData.Keys.Contains("user_id") && !string.IsNullOrEmpty(Convert.ToString(formData["user_id"]))) { user_id = Convert.ToString(formData["user_id"]); }
-            _SanphamBusiness.Delete(user_id);
+            int MASP = 1;
+            if (formData.Keys.Contains("MASP") && !string.IsNullOrEmpty(Convert.ToString(formData["user_id"]))) { MASP = Convert.ToInt32(formData["MASP"]); }
+            _SanphamBusiness.Delete(MASP);
             return Ok();
         }
         [Route("sp-phan-trang")]
@@ -132,7 +132,7 @@ namespace API.Controllers
 
         [Route("gettheomasp/{id}")]
         [HttpGet]
-        public SanphamModel GetDatabyID(string id)
+        public SanphamModel GetDatabyID(int id)
         {
             return _SanphamBusiness.GetDatabyID(id);
         }

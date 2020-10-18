@@ -8,7 +8,7 @@ namespace BLL
     {
         List<NccModel> GetDataAll();
         bool Update(NccModel model);
-        bool Delete(string id);
+        bool Delete(int id);
         bool Create(NccModel model);
     }
 }

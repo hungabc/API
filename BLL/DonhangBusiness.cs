@@ -16,13 +16,17 @@ namespace BLL
         {
             return _res.GetDataAll();
         }
-        public bool Delete(string id)
+        public bool Delete(int id)
         {
             return _res.Delete(id);
         }
         public bool Update(DonhangModel model)
         {
             return _res.Update(model);
+        }
+        public bool Create(DonhangModel model)
+        {
+            return _res.Create(model);
         }
     }
 }

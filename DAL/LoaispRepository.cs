@@ -54,7 +54,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public LoaispModel GetDatabyID(string id)
+        public LoaispModel GetDatabyID(int id)
         {
             string msgError = "";
             try
@@ -85,13 +85,13 @@ namespace DAL
                 throw ex;
             }
         }
-        public bool Delete(string id)
+        public bool Delete(int id)
         {
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "",
-                "@", id);
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "xoaloaisp",
+                "@MALOAI", id);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -108,7 +108,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "",
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sualoaisp",
                 "@MALOAI", model.MALOAI,
                 "@TENLOAI", model.TENLOAI,
                 "@PARENTID", model.PARENTID,

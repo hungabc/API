@@ -65,8 +65,8 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "",
-                "@", id);
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "xoakhachhang",
+                "@TENDANGNHAP", id);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
@@ -83,7 +83,7 @@ namespace DAL
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "",
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "suakhachhang",
                 "@TENDANGNHAP", model.TENDANGNHAP,
                 "@MATKHAU", model.MATKHAU,
                 "@HOTEN", model.HOTEN,

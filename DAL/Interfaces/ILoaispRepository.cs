@@ -9,9 +9,9 @@ namespace DAL
     {
         List<LoaispModel> GetDataAll();
         bool Create(LoaispModel model);
-        LoaispModel GetDatabyID(string id);
+        LoaispModel GetDatabyID(int id);
         bool Update(LoaispModel model);
-        bool Delete(string id);
+        bool Delete(int id);
         List<LoaispModel> GetData();
     }
 }

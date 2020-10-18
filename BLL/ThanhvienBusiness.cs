@@ -27,6 +27,9 @@ namespace BLL
         {
             return _res.GetDataAll();
         }
-       
+        public bool Create(ThanhvienModel model)
+        {
+            return _res.Create(model);
+        }
     }
 }
