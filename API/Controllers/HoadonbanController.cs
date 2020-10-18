@@ -19,7 +19,6 @@ namespace API.Controllers
         {
             abc = cba;
         }
-
         // GET: api/<HoadonbanController>
         [Route("get-all")]
         [HttpGet]
@@ -27,30 +26,19 @@ namespace API.Controllers
         {
             return abc.GetDataAll();
         }
-
         // GET api/<HoadonbanController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
-
         // POST api/<HoadonbanController>
+        [Route("them-HDB")]
         [HttpPost]
-        public void Post([FromBody] string value)
+        public HoadonbanModel CreateHDB([FromBody] HoadonbanModel model)
         {
-        }
-
-        // PUT api/<HoadonbanController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<HoadonbanController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            abc.Create(model);
+            return model;
         }
     }
 }

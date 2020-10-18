@@ -19,7 +19,6 @@ namespace API.Controllers
         {
             abc = cba;
         }
-
         // GET: api/<TintucController>
         [Route("get-all")]
         [HttpGet]
@@ -27,26 +26,22 @@ namespace API.Controllers
         {
             return abc.GetDataAll();
         }
-
         // GET api/<TintucController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
-
         // POST api/<TintucController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
-
         // PUT api/<TintucController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
-
         // DELETE api/<TintucController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)

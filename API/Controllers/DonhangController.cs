@@ -19,7 +19,6 @@ namespace API.Controllers
         {
             abc = cba;
         }
-
         // GET: api/<DonhangController>
         [Route("get-all")]
         [HttpGet]
@@ -27,30 +26,37 @@ namespace API.Controllers
         {
             return abc.GetDataAll();
         }
-
         // GET api/<DonhangController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
-
         // POST api/<DonhangController>
+        [Route("them-DH")]
         [HttpPost]
-        public void Post([FromBody] string value)
+        public DonhangModel CreateDH([FromBody] DonhangModel model)
         {
+            abc.Create(model);
+            return model;
         }
-
         // PUT api/<DonhangController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [Route("update-HD")]
+        [HttpPost]
+        public DonhangModel UpdateDH([FromBody] DonhangModel model)
         {
+            abc.Create(model);
+            return model;
         }
-
         // DELETE api/<DonhangController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [Route("delete-DH")]
+        [HttpPost]
+        public IActionResult DeleteDH([FromBody] Dictionary<string, object> formData)
         {
+            string user_id = "";
+            if (formData.Keys.Contains("user_id") && !string.IsNullOrEmpty(Convert.ToString(formData["user_id"]))) { user_id = Convert.ToString(formData["user_id"]); }
+            abc.Delete(user_id);
+            return Ok();
         }
     }
 }

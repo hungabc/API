@@ -16,6 +16,17 @@ namespace BLL
         {
             return _res.GetDataAll();
         }
-       
+        public bool Delete(string id)
+        {
+            return _res.Delete(id);
+        }
+        public bool Update(NccModel model)
+        {
+            return _res.Update(model);
+        }
+        public bool Create(NccModel model)
+        {
+            return _res.Create(model);
+        }
     }
 }

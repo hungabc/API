@@ -20,7 +20,6 @@ namespace API.Controllers
         {
             _SanphamBusiness = SanphamBusiness;
         }
-
         // GET: api/<SanphamController>
         [Route("get-all")]
         [HttpGet]
@@ -28,30 +27,61 @@ namespace API.Controllers
         {
             return _SanphamBusiness.GetDataAll();
         }
-
         // GET api/<SanphamController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
-
         // POST api/<SanphamController>
+        [Route("them-SP")]
         [HttpPost]
-        public void Post([FromBody] string value)
+        public SanphamModel CreateSP([FromBody] SanphamModel model)
         {
+            if (model.HINH != null)
+            {
+                var arrData = model.HINH.Split(';');
+                if (arrData.Length == 3)
+                {
+                    var savePath = $@"assets/images/hinhanh/Products/{arrData[0]}";
+                    model.HINH = $"{savePath}";
+                    SaveFileFromBase64String(savePath, arrData[2]);
+                }
+            }
+            _SanphamBusiness.Create(model);
+            return model;
         }
-
         // PUT api/<SanphamController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [Route("update-SP")]
+        [HttpPost]
+        public SanphamModel UpdateSP([FromBody] SanphamModel model)
         {
+            if (model.HINH != null)
+            {
+                var arrData = model.HINH.Split(';');
+                if (arrData.Length == 3)
+                {
+                    var savePath = $@"assets/images/hinhanh/Products/{arrData[0]}";
+                    model.HINH = $"{savePath}";
+                    SaveFileFromBase64String(savePath, arrData[2]);
+                }
+            }
+            _SanphamBusiness.Create(model);
+            return model;
         }
-
-        // DELETE api/<SanphamController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        private void SaveFileFromBase64String(string savePath, string v)
         {
+            throw new NotImplementedException();
+        }
+        // DELETE api/<SanphamController>/5
+        [Route("delete-SP")]
+        [HttpPost]
+        public IActionResult DeleteSP([FromBody] Dictionary<string, object> formData)
+        {
+            string user_id = "";
+            if (formData.Keys.Contains("user_id") && !string.IsNullOrEmpty(Convert.ToString(formData["user_id"]))) { user_id = Convert.ToString(formData["user_id"]); }
+            _SanphamBusiness.Delete(user_id);
+            return Ok();
         }
         [Route("sp-phan-trang")]
         public ResponseModel PhanTrang([FromBody] Dictionary<string, object> formData)
@@ -98,14 +128,6 @@ namespace API.Controllers
                 throw new Exception(ex.Message);
             }
             return response;
-        }
-    
-        [Route("them-sanpham")]
-        [HttpPost]
-        public SanphamModel CreateItem([FromBody] SanphamModel model)
-        {
-            _SanphamBusiness.Create(model);
-            return model;
         }
 
         [Route("gettheomasp/{id}")]

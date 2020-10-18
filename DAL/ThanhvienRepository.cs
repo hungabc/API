@@ -60,6 +60,53 @@ namespace DAL
                 throw ex;
             }
         }
+        public bool Delete(string id)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "",
+                "@", id);
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool Update(ThanhvienModel model)
+        {
+            string msgError = "";
+            try
+            {
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "",
+                "@TENDANGNHAP", model.TENDANGNHAP,
+                "@MATKHAU", model.MATKHAU,
+                "@HOTEN", model.HOTEN,
+                "@GIOITINH", model.GIOITINH,
+                "@DIACHI", model.DIACHI,
+                "@DIENTHOAI", model.DIENTHOAI,
+                "@EMAIL", model.EMAIL,
+                "@QUYEN", model.QUYEN,
+                "@NGAYDANGKY", model.NGAYDANGKY,
+                "@MAKICHHOAT", model.MAKICHHOAT,
+                "@KICHHOAT", model.KICHHOAT
+                );
+                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(Convert.ToString(result) + msgError);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
 

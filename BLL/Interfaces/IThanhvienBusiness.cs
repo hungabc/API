@@ -7,5 +7,8 @@ namespace BLL
     public partial interface IThanhvienBusiness
     {
         List<ThanhvienModel> GetDataAll();
+        bool Update(ThanhvienModel model);
+        bool Delete(string id);
+        void Create(ThanhvienModel model);
     }
 }

@@ -7,5 +7,6 @@ namespace BLL
     public partial interface IHoadonbanBusiness
     {
         List<HoadonbanModel> GetDataAll();
+        bool Create(HoadonbanModel model);
     }
 }

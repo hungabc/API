@@ -8,5 +8,8 @@ namespace DAL
     public partial interface INccRepository
     {
         List<NccModel> GetDataAll();
+        bool Create(NccModel model);
+        bool Update(NccModel model);
+        bool Delete(string id);
     }
 }

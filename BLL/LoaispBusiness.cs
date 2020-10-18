@@ -24,5 +24,13 @@ namespace BLL
         {
             return _res.GetDatabyID(id);
         }
+        public bool Delete(string id)
+        {
+            return _res.Delete(id);
+        }
+        public bool Update(LoaispModel model)
+        {
+            return _res.Update(model);
+        }
     }
 }

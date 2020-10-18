@@ -19,34 +19,28 @@ namespace API.Controllers
         {
             abc = cba;
         }
-
         // GET: api/<ThongkeController>
         [Route("get-all")]
         [HttpGet]
         public IEnumerable<ThongkeModel> GetDataAll()
         {
             return abc.GetDataAll();
-        }
-
-        // GET api/<ThongkeController>/5
+        }        // GET api/<ThongkeController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
-
         // POST api/<ThongkeController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
-
         // PUT api/<ThongkeController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
-
         // DELETE api/<ThongkeController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)

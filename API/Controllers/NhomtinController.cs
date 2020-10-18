@@ -19,7 +19,6 @@ namespace API.Controllers
         {
             abc = cba;
         }
-
         // GET: api/<NhomtinController>
         [Route("get-all")]
         [HttpGet]
@@ -27,26 +26,22 @@ namespace API.Controllers
         {
             return abc.GetDataAll();
         }
-
         // GET api/<NhomtinController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
-
         // POST api/<NhomtinController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
-
         // PUT api/<NhomtinController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
-
         // DELETE api/<NhomtinController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)

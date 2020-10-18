@@ -26,40 +26,42 @@ namespace API.Controllers
         {
             return _LoaispBusiness.GetDataAll();
         }
-
         // GET api/<LoaispController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
-
         // POST api/<LoaispController>
+        [Route("them-LSP")]
         [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<LoaispController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<LoaispController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-
-        [Route("them-loai")]
-        [HttpPost]
-        public LoaispModel CreateItem([FromBody] LoaispModel model)
+        public LoaispModel CreateLSP([FromBody] LoaispModel model)
         {
             _LoaispBusiness.Create(model);
             return model;
         }
-
+        public void Post([FromBody] string value)
+        {
+        }
+        // PUT api/<LoaispController>/5
+        [Route("update-LSP")]
+        [HttpPost]
+        public LoaispModel UpdateLSP([FromBody] LoaispModel model)
+        {
+            _LoaispBusiness.Create(model);
+            return model;
+        }
+        // DELETE api/<LoaispController>/5
+        [Route("delete-LSP")]
+        [HttpPost]
+        public IActionResult DeleteLSP([FromBody] Dictionary<string, object> formData)
+        {
+            string user_id = "";
+            if (formData.Keys.Contains("user_id") && !string.IsNullOrEmpty(Convert.ToString(formData["user_id"]))) { user_id = Convert.ToString(formData["user_id"]); }
+            _LoaispBusiness.Delete(user_id);
+            return Ok();
+        }
+        //
         [Route("getmaloai/{id}")]
         [HttpGet]
         public LoaispModel GetDatabyID(string id)

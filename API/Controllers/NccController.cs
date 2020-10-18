@@ -19,7 +19,6 @@ namespace API.Controllers
         {
             abc = cba;
         }
-
         // GET: api/<NccController>
         [Route("get-all")]
         [HttpGet]
@@ -27,30 +26,37 @@ namespace API.Controllers
         {
             return abc.GetDataAll();
         }
-
         // GET api/<NccController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
-
         // POST api/<NccController>
+        [Route("them-NCC")]
         [HttpPost]
-        public void Post([FromBody] string value)
+        public NccModel CreateNCC([FromBody] NccModel model)
         {
+            abc.Create(model);
+            return model;
         }
-
         // PUT api/<NccController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [Route("update-NCC")]
+        [HttpPost]
+        public NccModel UpdateNCC([FromBody] NccModel model)
         {
+            abc.Create(model);
+            return model;
         }
-
         // DELETE api/<NccController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [Route("delete-NCC")]
+        [HttpPost]
+        public IActionResult DeleteNCC([FromBody] Dictionary<string, object> formData)
         {
+            string user_id = "";
+            if (formData.Keys.Contains("user_id") && !string.IsNullOrEmpty(Convert.ToString(formData["user_id"]))) { user_id = Convert.ToString(formData["user_id"]); }
+            abc.Delete(user_id);
+            return Ok();
         }
     }
 }

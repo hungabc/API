@@ -8,5 +8,8 @@ namespace DAL
     public partial interface IThanhvienRepository
     {
         List<ThanhvienModel> GetDataAll();
+        bool Create(ThanhvienModel model);
+        bool Update(ThanhvienModel model);
+        bool Delete(string id);
     }
 }

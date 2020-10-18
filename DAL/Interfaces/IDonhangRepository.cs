@@ -8,5 +8,8 @@ namespace DAL
     public partial interface IDonhangRepository
     {
         List<DonhangModel> GetDataAll();
+        bool Create(DonhangModel model);
+        bool Update(DonhangModel model);
+        bool Delete(string id);
     }
 }

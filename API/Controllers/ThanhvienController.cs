@@ -27,30 +27,37 @@ namespace API.Controllers
         {
             return abc.GetDataAll();
         }
-
         // GET api/<ThanhvienController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
-
         // POST api/<ThanhvienController>
+        [Route("them-KH")]
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ThanhvienModel CreateKH([FromBody] ThanhvienModel model)
         {
+            abc.Create(model);
+            return model;
         }
-
         // PUT api/<ThanhvienController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [Route("update-KH")]
+        [HttpPost]
+        public ThanhvienModel UpdateKH([FromBody] ThanhvienModel model)
         {
+            abc.Create(model);
+            return model;
         }
-
         // DELETE api/<ThanhvienController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [Route("delete-KH")]
+        [HttpPost]
+        public IActionResult DeleteKH([FromBody] Dictionary<string, object> formData)
         {
+            string user_id = "";
+            if (formData.Keys.Contains("user_id") && !string.IsNullOrEmpty(Convert.ToString(formData["user_id"]))) { user_id = Convert.ToString(formData["user_id"]); }
+            abc.Delete(user_id);
+            return Ok();
         }
     }
 }

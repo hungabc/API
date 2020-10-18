@@ -40,5 +40,13 @@ namespace BLL
         {
             return _res.SpTheoLoai(pageIndex, pageSize, out total, url);
         }
+        public bool Delete(string id)
+        {
+            return _res.Delete(id);
+        }
+        public bool Update(SanphamModel model)
+        {
+            return _res.Update(model);
+        }
     }
 }
