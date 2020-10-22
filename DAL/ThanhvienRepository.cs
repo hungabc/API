@@ -45,7 +45,6 @@ namespace DAL
                 "@DIENTHOAI", model.DIENTHOAI,
                 "@EMAIL", model.EMAIL,
                 "@QUYEN", model.QUYEN,
-                "@NGAYDANGKY", model.NGAYDANGKY,
                 "@MAKICHHOAT", model.MAKICHHOAT,
                 "@KICHHOAT", model.KICHHOAT
                 );

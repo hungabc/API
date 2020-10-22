@@ -5,8 +5,9 @@ using System.Text;
 
 namespace DAL
 {
-    public partial interface IChitietDHRepository
+    public partial interface IChitietDHRepository 
     {
         List<ChitietDHModel> GetDataAll();
+        bool Create(ChitietDHModel model);
     }
 }

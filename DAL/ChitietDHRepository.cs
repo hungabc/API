@@ -39,9 +39,8 @@ namespace DAL
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "themchitietdonhang",
                 "@MADH", model.MADH,
                 "@MASP", model.MASP,
-                "@GIA", model.GIA,
-                "@SOLUONG", model.SOLUONG,
-                "@THANHTIEN", model.THANHTIEN
+                "@DONGIA", model.GIA,
+                "@SOLUONG", model.SOLUONG
                 );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {

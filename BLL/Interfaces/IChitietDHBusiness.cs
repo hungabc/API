@@ -7,5 +7,6 @@ namespace BLL
     public partial interface IChitietDHBusiness
     {
         List<ChitietDHModel> GetDataAll();
+        bool Create(ChitietDHModel ctdh);
     }
 }

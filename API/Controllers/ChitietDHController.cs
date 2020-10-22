@@ -36,9 +36,12 @@ namespace API.Controllers
         }
 
         // POST api/<ChitietDHController>
+        [Route("them-CTDH")]
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ChitietDHModel Post([FromBody] ChitietDHModel model)
         {
+            abc.Create(model);
+            return model;
         }
 
         // PUT api/<ChitietDHController>/5

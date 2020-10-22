@@ -16,6 +16,10 @@ namespace BLL
         {
             return _res.GetDataAll();
         }
-       
+        public bool Create(ChitietDHModel ctdh)
+        {
+            return _res.Create(ctdh);
+        }
+
     }
 }

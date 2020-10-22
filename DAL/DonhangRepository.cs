@@ -37,12 +37,9 @@ namespace DAL
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "themdonhang",
-                "@MADH", model.MADH,
+                
                 "@TENDANGNHAP", model.TENDANGNHAP,
-                "@NGAYDATHANG", model.NGAYDATHANG,
-                "@NGAYYEUCAU", model.NGAYYEUCAU,
-                "@DIACHINGUOINHAN", model.DIACHINGUOINHAN,
-                "@TINHTRANG", model.TINHTRANG
+                "@DIACHINGUOINHAN", model.DIACHINGUOINHAN
                 );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
