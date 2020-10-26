@@ -9,6 +9,6 @@ namespace BLL
         List<DonhangModel> GetDataAll();
         bool Update(DonhangModel model);
         bool Delete(int id);
-        bool Create(DonhangModel model);
+        DonhangModel Create(DonhangModel model);
     }
 }

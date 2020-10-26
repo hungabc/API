@@ -37,8 +37,8 @@ namespace API.Controllers
         [HttpPost]
         public DonhangModel CreateDH([FromBody] DonhangModel model)
         {
-            abc.Create(model);
-            return model;
+           return abc.Create(model);
+            
         }
         // PUT api/<DonhangController>/5
         [Route("update-HD")]

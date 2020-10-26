@@ -31,21 +31,20 @@ namespace DAL
                 throw ex;
             }
         }
-        public bool Create(DonhangModel model)
+        public DonhangModel Create(DonhangModel model)
         {
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "themdonhang",
+                var result = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "themdonhang",
                 
                 "@TENDANGNHAP", model.TENDANGNHAP,
-                "@DIACHINGUOINHAN", model.DIACHINGUOINHAN
+                "@DIACHINGUOINHAN", model.DIACHINGUOINHAN,
+                "@TENKH",model.TENKH, "@EMAIL",model.EMAIL," @SDT",model.SDT
                 );
-                if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
-                {
-                    throw new Exception(Convert.ToString(result) + msgError);
-                }
-                return true;
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return result.ConvertTo<DonhangModel>().FirstOrDefault();
             }
             catch (Exception ex)
             {

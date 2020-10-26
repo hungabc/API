@@ -84,6 +84,7 @@ namespace API.Controllers
             return Ok();
         }
         [Route("sp-phan-trang")]
+        [HttpPost]
         public ResponseModel PhanTrang([FromBody] Dictionary<string, object> formData)
         {
             var response = new ResponseModel();

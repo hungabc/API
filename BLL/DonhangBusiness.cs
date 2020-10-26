@@ -24,7 +24,7 @@ namespace BLL
         {
             return _res.Update(model);
         }
-        public bool Create(DonhangModel model)
+        public DonhangModel Create(DonhangModel model)
         {
             return _res.Create(model);
         }
