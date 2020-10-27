@@ -51,6 +51,21 @@ namespace DAL
                 throw ex;
             }
         }
+        public List<ChitietDHModel> GetChiTiet(int madonhang) 
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getChitietdh","@madon",madonhang);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<ChitietDHModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public bool Delete(int id)
         {
             string msgError = "";

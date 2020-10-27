@@ -14,7 +14,12 @@ namespace BLL
         }
         public List<DonhangModel> GetDataAll()
         {
-            return _res.GetDataAll();
+            var kq= _res.GetDataAll();
+            foreach(var item in kq)
+            {
+                item.chitiet = _res.GetChiTiet(item.MADH);
+            }
+            return kq;
         }
         public bool Delete(int id)
         {

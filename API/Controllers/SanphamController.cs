@@ -48,6 +48,7 @@ namespace API.Controllers
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
             }
+            
             _SanphamBusiness.Create(model);
             return model;
         }
@@ -74,13 +75,13 @@ namespace API.Controllers
             throw new NotImplementedException();
         }
         // DELETE api/<SanphamController>/5
-        [Route("delete-SP")]
-        [HttpPost]
-        public IActionResult DeleteSP([FromBody] Dictionary<string, object> formData)
+        [Route("delete-SP/{masp}")]
+        [HttpGet]
+        public IActionResult DeleteSP(  int masp)
         {
-            int MASP = 1;
-            if (formData.Keys.Contains("MASP") && !string.IsNullOrEmpty(Convert.ToString(formData["user_id"]))) { MASP = Convert.ToInt32(formData["MASP"]); }
-            _SanphamBusiness.Delete(MASP);
+            
+            if(GetDatabyID(masp)!=null)
+            _SanphamBusiness.Delete(masp);
             return Ok();
         }
         [Route("sp-phan-trang")]
