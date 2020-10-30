@@ -10,5 +10,7 @@ namespace BLL
         bool Update(DonhangModel model);
         bool Delete(int id);
         DonhangModel Create(DonhangModel model);
+        DonhangModel Thaydoitrangthai(int masp);
+        DonhangModel huydon(int masp);
     }
 }

@@ -48,6 +48,20 @@ namespace API.Controllers
             abc.Create(model);
             return model;
         }
+        [Route("change-stt/{masp}")]
+    [HttpGet]
+        public DonhangModel Thaydoitrangthai(int masp)
+        {
+           return abc.Thaydoitrangthai(masp);
+           
+        }
+        [Route("cancel/{masp}")]
+        [HttpGet]
+        public DonhangModel huydon(int masp)
+        {
+            return abc.huydon(masp);
+
+        }
         // DELETE api/<DonhangController>/5
         [Route("delete-DH")]
         [HttpPost]

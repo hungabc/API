@@ -33,5 +33,13 @@ namespace BLL
         {
             return _res.Create(model);
         }
+        public DonhangModel Thaydoitrangthai(int masp)
+        {
+            return _res.Thaydoitrangthai(masp);
+        }
+        public DonhangModel huydon(int masp)
+        {
+            return _res.huydon(masp);
+        }
     }
 }

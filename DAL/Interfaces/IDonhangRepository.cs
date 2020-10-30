@@ -12,5 +12,7 @@ namespace DAL
         bool Update(DonhangModel model);
         bool Delete(int id);
         List<ChitietDHModel> GetChiTiet(int madonhang);
+        DonhangModel Thaydoitrangthai(int madh);
+        DonhangModel huydon(int madh);
     }
 }
