@@ -37,8 +37,8 @@ namespace API.Controllers
         [HttpPost]
         public DonhangModel CreateDH([FromBody] DonhangModel model)
         {
-           return abc.Create(model);
-            
+            return abc.Create(model);
+
         }
         // PUT api/<DonhangController>/5
         [Route("update-HD")]
@@ -49,11 +49,11 @@ namespace API.Controllers
             return model;
         }
         [Route("change-stt/{masp}")]
-    [HttpGet]
+        [HttpGet]
         public DonhangModel Thaydoitrangthai(int masp)
         {
-           return abc.Thaydoitrangthai(masp);
-           
+            return abc.Thaydoitrangthai(masp);
+
         }
         [Route("cancel/{masp}")]
         [HttpGet]

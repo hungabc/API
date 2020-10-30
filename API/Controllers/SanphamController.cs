@@ -48,7 +48,7 @@ namespace API.Controllers
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
             }
-            
+
             _SanphamBusiness.Create(model);
             return model;
         }
@@ -77,11 +77,11 @@ namespace API.Controllers
         // DELETE api/<SanphamController>/5
         [Route("delete-SP/{masp}")]
         [HttpGet]
-        public IActionResult DeleteSP(  int masp)
+        public IActionResult DeleteSP(int masp)
         {
-            
-            if(GetDatabyID(masp)!=null)
-            _SanphamBusiness.Delete(masp);
+
+            if (GetDatabyID(masp) != null)
+                _SanphamBusiness.Delete(masp);
             return Ok();
         }
         [Route("sp-phan-trang")]
@@ -106,7 +106,7 @@ namespace API.Controllers
             }
             return response;
         }
-  
+
         [Route("search")]
         [HttpPost]
         public ResponseModel Search([FromBody] Dictionary<string, object> formData)
@@ -116,7 +116,7 @@ namespace API.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
-                int MALOAI= 1;
+                int MALOAI = 1;
                 if (formData.Keys.Contains("MALOAI") && !string.IsNullOrEmpty(Convert.ToString(formData["MALOAI"]))) { MALOAI = Convert.ToInt32(formData["MALOAI"]); }
                 long total = 0;
                 var data = _SanphamBusiness.Search(page, pageSize, out total, MALOAI);
@@ -140,7 +140,7 @@ namespace API.Controllers
         }
         [Route("sp-theo-loai/{url}/{page}/{size}")]
         [HttpGet]
-        public List<SanphamModel> Sptheoloai(string url,int?  page,  int?size)
+        public List<SanphamModel> Sptheoloai(string url, int? page, int? size)
         {
             size = size ?? 10;
             page = page ?? 1;
