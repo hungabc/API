@@ -12,10 +12,19 @@ namespace BLL
         {
             _res = LoaispGroupRes;
         }
-        public List<DonhangModel> GetDataAll()
+        public List<DonhangModel> GetDataAll(int pageIndex, int pageSize, out long total)
         {
-            var kq= _res.GetDataAll();
+            var kq= _res.GetDataAll(pageIndex,pageSize,out total);
             foreach(var item in kq)
+            {
+                item.chitiet = _res.GetChiTiet(item.MADH);
+            }
+            return kq;
+        }
+        public List<DonhangModel> Getbytrangthai(int pageIndex, int pageSize,string trangthai, out long total)
+        {
+            var kq = _res.Getbytrangthai(pageIndex, pageSize, trangthai, out total);
+            foreach (var item in kq)
             {
                 item.chitiet = _res.GetChiTiet(item.MADH);
             }

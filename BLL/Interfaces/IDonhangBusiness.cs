@@ -6,11 +6,12 @@ namespace BLL
 {
     public partial interface IDonhangBusiness
     {
-        List<DonhangModel> GetDataAll();
+        List<DonhangModel> GetDataAll(int pageIndex, int pageSize, out long total);
         bool Update(DonhangModel model);
         bool Delete(int id);
         DonhangModel Create(DonhangModel model);
         DonhangModel Thaydoitrangthai(int masp);
         DonhangModel huydon(int masp);
+        List<DonhangModel> Getbytrangthai(int pageIndex, int pageSize, string trangthai, out long total);
     }
 }

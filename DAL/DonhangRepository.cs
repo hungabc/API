@@ -16,14 +16,35 @@ namespace DAL
             _dbHelper = dbHelper;
         }
 
-        public List<DonhangModel> GetDataAll()
+        public List<DonhangModel> GetDataAll( int pageIndex,int pageSize,out long total)
         {
+            total = 0;
             string msgError = "";
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getdonhang");
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getdonhang"," @page_index",pageIndex, @"page_size",pageSize);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
+                if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
+
+                return dt.ConvertTo<DonhangModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<DonhangModel> Getbytrangthai(int pageIndex, int pageSize,string trangthai, out long total)
+        {
+            total = 0;
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "getdhbytrangthai", " @page_index", pageIndex, @"page_size", pageSize, "@trang_thai", trangthai) ;
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
+
                 return dt.ConvertTo<DonhangModel>().ToList();
             }
             catch (Exception ex)

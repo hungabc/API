@@ -20,11 +20,25 @@ namespace API.Controllers
             abc = cba;
         }
         // GET: api/<DonhangController>
-        [Route("get-all")]
+        [Route("get-all/{pageIndex}/{pageSize}")]
         [HttpGet]
-        public IEnumerable<DonhangModel> GetDataAll()
+        public ResponseModel GetDataAll(int pageIndex, int pageSize)
         {
-            return abc.GetDataAll();
+            var kq = new ResponseModel();
+            long total = 0;
+            kq.Data= abc.GetDataAll(pageIndex,pageSize,out total);
+            kq.TotalItems = total;
+            return kq;
+        }
+        [Route("get-all/{pageIndex}/{pageSize}/{trangthai}")]
+        [HttpGet]
+        public ResponseModel Getbytt(int pageIndex, int pageSize,string trangthai)
+        {
+            var kq = new ResponseModel();
+            long total = 0;
+            kq.Data = abc.Getbytrangthai(pageIndex, pageSize,trangthai, out total);
+            kq.TotalItems = total;
+            return kq;
         }
         // GET api/<DonhangController>/5
         [HttpGet("{id}")]
