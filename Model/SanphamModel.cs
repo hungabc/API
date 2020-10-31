@@ -8,7 +8,6 @@ namespace Model
         public int MASP { get; set; }
         public string MACODE { get; set; }
         public string TENSP { get; set; }
-        public string URL { get; set; }
         public int? GIA { get; set; }
         public string MAGIAMGIA  { get; set; }
         public string HINH { get; set; }
@@ -18,7 +17,6 @@ namespace Model
         public string MOTA { get; set; }
         public string KEYWORD { get; set; }
         public int ANHIEN { get; set; }
-        public int MANCC  { get; set; }
         public int MALOAI { get; set; }
         public List<SanphamModel> children { get; set; }
         public string type { get; set; }

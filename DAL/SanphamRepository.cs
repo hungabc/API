@@ -176,7 +176,6 @@ namespace DAL
                 "@MASP", model.MASP,
                 "@MACODE", model.MACODE,
                 "@TENSP", model.TENSP,
-                "@URL", model.URL,
                 "@GIA", model.GIA,
                 "@MAGIAMGIA", model.MAGIAMGIA,
                 "@HINH", model.HINH,
@@ -186,7 +185,6 @@ namespace DAL
                 "@MOTA", model.MOTA,
                 "@KEYWORD", model.KEYWORD,
                 "@ANHIEN", model.ANHIEN,
-                "@MANCC", model.MANCC,
                 "@MALOAI", model.MALOAI
                 );
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
