@@ -9,7 +9,7 @@ namespace Model
         public string MACODE { get; set; }
         public string TENSP { get; set; }
         public int? GIA { get; set; }
-        public string MAGIAMGIA  { get; set; }
+        public int MAGIAMGIA { get; set; }
         public string HINH { get; set; }
         public int SOLUONGTON { get; set; }
         public string NGAYNHAP { get; set; }

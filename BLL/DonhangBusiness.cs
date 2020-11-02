@@ -21,6 +21,12 @@ namespace BLL
             }
             return kq;
         }
+        public List<ChitietDHModel> GetChiTiet(int madonhang)
+        {
+            var kq = _res.GetChiTiet(madonhang);
+           
+            return kq;
+        }
         public List<DonhangModel> Getbytrangthai(int pageIndex, int pageSize,string trangthai, out long total)
         {
             var kq = _res.Getbytrangthai(pageIndex, pageSize, trangthai, out total);

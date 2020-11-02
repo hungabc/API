@@ -64,7 +64,19 @@ namespace DAL
             {
                 throw ex;
             }
-        }
+        }/*
+           hinh:data_image,
+            macode: value.macode,
+            tensp: value.tensp,
+            gia: Number.parseInt(value.gia),
+            magiamgia: Number.parseInt(value.magiamgia),
+            soluongton: Number.parseInt(value.soluong),
+            ngaynhap: value.ngaynhap,
+            mota: value.mota,
+            anhien:Number.parseInt(value.anhien),
+            maloai:Number.parseInt(value.maloai),
+           masp:this.item.masp,          
+          */
         public bool Create(SanphamModel model)
         {
             string msgError = "";

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Schema;
 using BLL;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Model;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -16,9 +18,11 @@ namespace API.Controllers
     public class SanphamController : ControllerBase
     {
         private ISanphamBusiness _SanphamBusiness;
-        public SanphamController(ISanphamBusiness SanphamBusiness)
+        private string _path;
+        public SanphamController(ISanphamBusiness SanphamBusiness, IConfiguration configuration)
         {
             _SanphamBusiness = SanphamBusiness;
+            _path = configuration["AppSettings:PATH"];
         }
         // GET: api/<SanphamController>
         [Route("get-all")]
@@ -70,9 +74,31 @@ namespace API.Controllers
             _SanphamBusiness.Create(model);
             return model;
         }
-        private void SaveFileFromBase64String(string savePath, string v)
+        public string SaveFileFromBase64String(string RelativePathFileName, string dataFromBase64String)
         {
-            throw new NotImplementedException();
+            if (dataFromBase64String.Contains("base64,"))
+            {
+                dataFromBase64String = dataFromBase64String.Substring(dataFromBase64String.IndexOf("base64,", 0) + 7);
+            }
+            return WriteFileToAuthAccessFolder(RelativePathFileName, dataFromBase64String);
+        }
+        public string WriteFileToAuthAccessFolder(string RelativePathFileName, string base64StringData)
+        {
+            try
+            {
+                string result = "";
+                string serverRootPathFolder = _path;
+                string fullPathFile = $@"{serverRootPathFolder}\{RelativePathFileName}";
+                string fullPathFolder = System.IO.Path.GetDirectoryName(fullPathFile);
+                if (!Directory.Exists(fullPathFolder))
+                    Directory.CreateDirectory(fullPathFolder);
+                System.IO.File.WriteAllBytes(fullPathFile, Convert.FromBase64String(base64StringData));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
         // DELETE api/<SanphamController>/5
         [Route("delete-SP/{masp}")]

@@ -12,6 +12,7 @@ namespace BLL
         DonhangModel Create(DonhangModel model);
         DonhangModel Thaydoitrangthai(int masp);
         DonhangModel huydon(int masp);
+        List<ChitietDHModel> GetChiTiet(int madonhang);
         List<DonhangModel> Getbytrangthai(int pageIndex, int pageSize, string trangthai, out long total);
     }
 }

@@ -30,6 +30,14 @@ namespace API.Controllers
             kq.TotalItems = total;
             return kq;
         }
+        [Route("get-ct/{ma}")]
+        [HttpGet]
+        public List<ChitietDHModel> GetChiTiet(int ma)
+        {
+          
+           return abc.GetChiTiet(ma);
+            
+        }
         [Route("get-all/{pageIndex}/{pageSize}/{trangthai}")]
         [HttpGet]
         public ResponseModel Getbytt(int pageIndex, int pageSize,string trangthai)
