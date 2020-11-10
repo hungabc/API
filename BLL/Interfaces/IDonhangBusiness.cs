@@ -14,5 +14,6 @@ namespace BLL
         DonhangModel huydon(int masp);
         List<ChitietDHModel> GetChiTiet(int madonhang);
         List<DonhangModel> Getbytrangthai(int pageIndex, int pageSize, string trangthai, out long total);
+        DonhangModel GetByID(int id);
     }
 }

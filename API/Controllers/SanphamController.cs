@@ -66,12 +66,12 @@ namespace API.Controllers
                 var arrData = model.HINH.Split(';');
                 if (arrData.Length == 3)
                 {
-                    var savePath = $@"assets/images/hinhanh/Products/{arrData[0]}";
+                    var savePath = $@"{arrData[0]}";
                     model.HINH = $"{savePath}";
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
             }
-            _SanphamBusiness.Create(model);
+            _SanphamBusiness.Update(model);
             return model;
         }
         public string SaveFileFromBase64String(string RelativePathFileName, string dataFromBase64String)

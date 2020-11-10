@@ -15,5 +15,6 @@ namespace DAL
         DonhangModel Thaydoitrangthai(int madh);
         DonhangModel huydon(int madh);
         List<DonhangModel> Getbytrangthai(int pageIndex, int pageSize, string trangthai, out long total);
+        DonhangModel GetByID(int id);
     }
 }

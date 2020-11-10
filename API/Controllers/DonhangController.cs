@@ -30,6 +30,12 @@ namespace API.Controllers
             kq.TotalItems = total;
             return kq;
         }
+        [Route("get-by-id/{id}")]
+        [HttpGet]
+        public DonhangModel GetByID(int id)
+        {
+            return abc.GetByID(id);
+        }
         [Route("get-ct/{ma}")]
         [HttpGet]
         public List<ChitietDHModel> GetChiTiet(int ma)

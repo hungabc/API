@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Model;
+using System.Globalization;
+
 namespace BLL
 {
     public partial class DonhangBusiness : IDonhangBusiness
@@ -19,6 +21,12 @@ namespace BLL
             {
                 item.chitiet = _res.GetChiTiet(item.MADH);
             }
+            return kq;
+        }
+        public DonhangModel GetByID(int id)
+        {
+            var kq = _res.GetByID(id);
+            kq.chitiet = _res.GetChiTiet(kq.MADH);
             return kq;
         }
         public List<ChitietDHModel> GetChiTiet(int madonhang)

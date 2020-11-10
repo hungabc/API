@@ -34,6 +34,24 @@ namespace DAL
                 throw ex;
             }
         }
+        public DonhangModel GetByID(int id)
+        {
+            
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "GetDHByID", "@id", id);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                
+                return dt.ConvertTo<DonhangModel>().FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
         public List<DonhangModel> Getbytrangthai(int pageIndex, int pageSize,string trangthai, out long total)
         {
             total = 0;

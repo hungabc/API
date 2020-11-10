@@ -185,7 +185,7 @@ namespace DAL
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "suasanpham",
-                "@MASP", model.MASP,
+                "@MASP",model.MASP,
                 "@MACODE", model.MACODE,
                 "@TENSP", model.TENSP,
                 "@GIA", model.GIA,
@@ -193,9 +193,7 @@ namespace DAL
                 "@HINH", model.HINH,
                 "@SOLUONGTON", model.SOLUONGTON,
                 "@NGAYNHAP", model.NGAYNHAP,
-                "@BANCHAY", model.BANCHAY,
                 "@MOTA", model.MOTA,
-                "@KEYWORD", model.KEYWORD,
                 "@ANHIEN", model.ANHIEN,
                 "@MALOAI", model.MALOAI
                 );
