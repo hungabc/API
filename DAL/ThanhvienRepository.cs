@@ -31,6 +31,24 @@ namespace DAL
                 throw ex;
             }
         }
+        public ThanhvienModel Login(ThanhvienModel thanhvien)
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "dangnhap",
+                    "@tendangnhap",thanhvien.TENDANGNHAP,"@matkhau",thanhvien.MATKHAU,
+                    "@dienthoai",thanhvien.DIENTHOAI,"@email",thanhvien.EMAIL
+                    );
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<ThanhvienModel>().FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public bool Create(ThanhvienModel model)
         {
             string msgError = "";

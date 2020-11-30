@@ -27,6 +27,11 @@ namespace BLL
         {
             return _res.GetDataAll();
         }
+        public ThanhvienModel Login(ThanhvienModel thanhvien)
+        {
+            var kq = _res.Login(thanhvien);
+            return kq;
+        }
         public bool Create(ThanhvienModel model)
         {
             return _res.Create(model);

@@ -41,12 +41,19 @@ namespace API.Controllers
             abc.Create(model);
             return model;
         }
+        [Route("login")]
+        [HttpPost]
+        public ThanhvienModel Login([FromBody] ThanhvienModel model)
+        {
+            var kq = abc.Login(model);
+            return kq;
+        }
         // PUT api/<ThanhvienController>/5
         [Route("update-KH")]
         [HttpPost]
         public ThanhvienModel UpdateKH([FromBody] ThanhvienModel model)
         {
-            abc.Create(model);
+            abc.Update(model);
             return model;
         }
         // DELETE api/<ThanhvienController>/5
