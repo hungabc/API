@@ -36,5 +36,9 @@ namespace BLL
         {
             return _res.Create(model);
         }
+        public bool KiemTraUser(string tenDangNhap,string soDienThoai,string email)
+        {
+            return _res.KiemTraUser(tenDangNhap,soDienThoai,email);
+        }
     }
 }

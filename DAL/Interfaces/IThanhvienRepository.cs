@@ -12,5 +12,6 @@ namespace DAL
         bool Update(ThanhvienModel model);
         bool Delete(string id);
         ThanhvienModel Login(ThanhvienModel thanhvien);
+        bool KiemTraUser(string tendangnhap, string sodienthoai, string email);
     }
 }

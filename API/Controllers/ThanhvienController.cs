@@ -38,8 +38,24 @@ namespace API.Controllers
         [HttpPost]
         public ThanhvienModel CreateKH([FromBody] ThanhvienModel model)
         {
+
+            if (abc.KiemTraUser(model.TENDANGNHAP, model.DIENTHOAI, model.EMAIL))
+            {
+
+                return null;
+            }
+            ThanhvienModel result = new ThanhvienModel();
             abc.Create(model);
-            return model;
+            result.TENDANGNHAP = model.TENDANGNHAP;
+            result.DIACHI = model.DIACHI;
+            result.DIENTHOAI = model.DIENTHOAI;
+            result.EMAIL = model.EMAIL;
+            result.HOTEN = model.HOTEN;
+            result.KICHHOAT = model.KICHHOAT;
+            result.QUYEN = model.QUYEN;
+            result.NGAYDANGKY = model.NGAYDANGKY;
+            result.GIOITINH = model.GIOITINH;
+            return result; //không nên return model vì sẽ bị lộ mật khaaur
         }
         [Route("login")]
         [HttpPost]

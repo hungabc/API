@@ -11,5 +11,6 @@ namespace BLL
         bool Delete(string id);
         bool Create(ThanhvienModel model);
         ThanhvienModel Login(ThanhvienModel thanhvien);
+        bool KiemTraUser(string tenDangNhap, string soDienThoai, string email);
     }
 }

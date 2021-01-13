@@ -49,6 +49,24 @@ namespace DAL
                 throw ex;
             }
         }
+        public bool KiemTraUser(string tendangnhap, string sodienthoai,string email)
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "kiemtra_user",
+                    "@tendangnhap", tendangnhap, "@sodienthoai", sodienthoai,
+                    "@email", email
+                    );
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return (int)dt.Rows[0]["userS_count"]>0;//nếu >0 là return true, tức là trùng
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public bool Create(ThanhvienModel model)
         {
             string msgError = "";
