@@ -16,6 +16,31 @@ namespace DAL
             _dbHelper = dbHelper;
         }
 
+        public List<SanphamModel> TimKiemSanPham(string keyWord, int? maLoai, int?minPrice, int? maxPrice,int?sapXep, int?index, int? size,out long total)
+        {
+            string msgError = "";
+            total = 0;
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "TimKiemSanPhamTrangChu",
+                    "@KeyWord",keyWord,
+                    "@MaLoai",maLoai,
+                    "@MinPrice",minPrice,
+                    "@MaxPrice",maxPrice,
+                    "@SapXep",sapXep,
+                    "@PageIndex",index,
+                    "@PageSize",size);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];
+                return dt.ConvertTo<SanphamModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public List<SanphamModel> GetDataAll()
         {
             string msgError = "";
@@ -31,6 +56,7 @@ namespace DAL
                 throw ex;
             }
         }
+
         public List<SanphamModel> Phantrang(int pageIndex, int pageSize, out long total)
         {
             total = 0;
@@ -49,6 +75,7 @@ namespace DAL
                 throw ex;
             }
         }
+
         public List<SanphamModel> SanPhamMoi(int soluong)
         { 
             string msgError = "";
@@ -77,6 +104,7 @@ namespace DAL
             maloai:Number.parseInt(value.maloai),
            masp:this.item.masp,          
           */
+
         public bool Create(SanphamModel model)
         {
             string msgError = "";
@@ -105,6 +133,7 @@ namespace DAL
                 throw ex;
             }
         }
+
         public List<SanphamModel> Search(int pageIndex, int pageSize, out long total, int MALOAI)
         {
             string msgError = "";
@@ -125,6 +154,7 @@ namespace DAL
                 throw ex;
             }
         }
+
         public List<SanphamModel> SpTheoLoai(int pageIndex, int pageSize, out long total, string url)
         {
             string msgError = "";
@@ -145,6 +175,7 @@ namespace DAL
                 throw ex;
             }
         }
+
         public SanphamModel GetDatabyID(int id)
         {
             string msgError = "";

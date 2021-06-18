@@ -12,6 +12,10 @@ namespace BLL
         {
             _res = SanphamGroupRes;
         }
+        public List<SanphamModel> TimKiemSanPham(string keyWord, int? maLoai, int? minPrice, int? maxPrice, int? sapXep, int? index, int? size, out long total)
+        {
+            return _res.TimKiemSanPham(keyWord, maLoai, minPrice, maxPrice, sapXep, index, size, out total);
+        }
         public List<SanphamModel> GetDataAll()
         {
             return _res.GetDataAll();

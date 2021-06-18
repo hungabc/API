@@ -24,6 +24,19 @@ namespace API.Controllers
             _SanphamBusiness = SanphamBusiness;
             _path = configuration["AppSettings:PATH"];
         }
+
+        [Route("tim-kiem-san-pham/{keyWord?}/{maLoai?}/{minPrice?}/{maxPrice?}/{sapXep?}/{index?}/{size?}")]
+        public IActionResult TimKiemSanPham(string keyWord, int? maLoai, int? minPrice, int? maxPrice, int? sapXep, int? index, int? size)
+        {
+            long total;
+            ResponseModel response = new ResponseModel();
+            response.Data = _SanphamBusiness.TimKiemSanPham(keyWord, maLoai, minPrice, maxPrice, sapXep, index, size, out total);
+            response.TotalItems = total;
+            response.NullableIndex = index;
+            response.NullableSize = size;
+            return Ok(response);
+        }
+
         // GET: api/<SanphamController>
         [Route("get-all")]
         [HttpGet]
